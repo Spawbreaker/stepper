@@ -42,7 +42,7 @@ export const StyledLight = styled.div<LightProps>`
 
 export const StyledLightText = styled.span`
   padding-top: 3px;
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   color: ${({theme}) => theme.colors.white};
 `
 
@@ -63,7 +63,10 @@ export const StyledDash = styled.div<DashProps>`
 `;
 
 export const StyledText = styled.div<TextProps>`
-  padding-top: 3px;
+  font-size: ${({ theme }) => theme.typography.fontSize.medium};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.regular};
+  line-height: ${({ theme }) => theme.lineHeight.medium};
+  padding-right: 1rem;
   ${({active}) => !active && css`
     display: none;
   `}
@@ -77,16 +80,22 @@ export const StyledText = styled.div<TextProps>`
 export const StyledMobileLight = styled.div`
   background-color: ${({theme}) => theme.colors.primary};
   color: ${({theme}) => theme.colors.white};
+  font-size: ${({ theme }) => theme.typography.fontSize.small};
   border-radius: 20px;
   height: 1.25rem;
   padding: 0.25rem 0.5rem;
   margin-bottom: 0.25rem;
   width: fit-content;
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.typography.fontWeight.semiBold};
   ${({ theme }) => theme.breakpoints.tablet} {
     display: none;
   }
 `;
+
+export const StyledMobileLightText = styled.span`
+  display: block;
+  padding-top: 2px;
+`
 
 StyledStep.defaultProps = { theme: defaultTheme };
 StyledLight.defaultProps = { theme: defaultTheme };
@@ -95,3 +104,4 @@ StyledDash.defaultProps = { theme: defaultTheme };
 StyledText.defaultProps = { theme: defaultTheme };
 StyledStepper.defaultProps = { theme: defaultTheme }
 StyledMobileLight.defaultProps = { theme: defaultTheme };
+StyledMobileLightText.defaultProps = { theme: defaultTheme };

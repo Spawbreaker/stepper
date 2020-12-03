@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckIcon } from '@bigcommerce/big-design-icons'
 
-import { StyledStep, StyledDash, StyledLight, StyledLightText, StyledText, StyledStepper, StyledMobileLight } from './styled';
+import { StyledStep, StyledDash, StyledLight, StyledLightText, StyledText, StyledStepper, StyledMobileLight, StyledMobileLightText } from './styled';
 
 export interface StepProps {
   number?: number;
@@ -28,7 +28,7 @@ export const Step: React.FC<StepProps> = ({ number, text, state, isLast }) => {
     <StyledStep>
       <StyledLight active={isCurrent || isDone}>
         { isDone ? 
-          <CheckIcon color="white" size="100%"  /> : <StyledLightText>{number}</StyledLightText>
+          <CheckIcon color="white" size="large" style={{ padding: '2px' }} /> : <StyledLightText>{number}</StyledLightText>
         }
       </StyledLight>
       <StyledDash active={isDone} hidden={isLast}/>
@@ -47,7 +47,9 @@ export const Stepper: React.FC<StepperProps> = ({ steps = [], currentStep = 0 })
 
   return(
     <StyledStepper>
-      <StyledMobileLight >Step {currentStep+1} of {steps.length}</StyledMobileLight>
+      <StyledMobileLight >
+        <StyledMobileLightText>Step {currentStep+1} of {steps.length}</StyledMobileLightText>
+      </StyledMobileLight>
       {steps.map((text, i) => (<Step 
         number={i+1}
         text={text} 
